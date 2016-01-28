@@ -81,7 +81,7 @@ style: style.css
 Git is distributed version control system
 
 * Keeps every saved change (commit/version) of your text files
-* Allows to backup any version from history
+* Allows to restore any version from history
 * Syncs with remote computers (repositories)
 * Works offline (no Internet needed)
 * Easy team work
@@ -161,7 +161,7 @@ Date:   Wed Jan 27 19:14:14 2016 +0100
 ### GIT - Backup changes
 
 * Let's send the changes into a remote computer (repository) and save work - `git push`
-* The remote repository can be in the Internet and our work is safely backuped
+* The remote repository can be any where in the network
 * Download changes from the remote repository - `git pull`
 
 --
@@ -171,7 +171,7 @@ Date:   Wed Jan 27 19:14:14 2016 +0100
 * Creates new version
 * A commit message is needed
 * The message has to describe **what is done**! - IMPORTANT
-* Keep commit **smallest as possible** - IMPORTANT
+* Keep commit **simple as possible** - IMPORTANT
 * Has a unique ID - that weird long string like `55f21e56db012484919cef1a1f196ffb9aea1915`
 
 --
@@ -208,7 +208,7 @@ Date:   Wed Jan 27 19:14:14 2016 +0100
 #### Push
 
 * Pushes commits into a remote repository
-* Repositories could be anywhere (connected into a network)
+* Repositories could be anywhere (connected in a network)
 
 #### Pull
 
@@ -253,6 +253,7 @@ Date:   Wed Jan 27 19:14:14 2016 +0100
 * [Pro GIT](https://git-scm.com/book/en/v2) - ask me for czech version in PDF
 * Git guide - https://backlogtool.com/git-guide/en/
 * Git game (advanced) - [http://pcottle.github.io/learnGitBranching/](http://pcottle.github.io/learnGitBranching/)
+* This presentation [https://github.com/LukasRychtecky/git-talks/](https://github.com/LukasRychtecky/git-talks/)
 
 --
 
