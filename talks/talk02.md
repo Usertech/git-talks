@@ -26,7 +26,7 @@ style: style.css
 * Checkout a reset
 * Reflog, stash a blame
 * Konfig a aliasy
-* Reference
+* .gitignore
 
 --
 
@@ -84,7 +84,7 @@ style: style.css
 
 Historie v GITu je uložena jako acyklický orientovaný graf
 
-![DAG](http://cdn.meme.am/instances/500x/55967408.jpg)
+<img src="http://cdn.meme.am/instances/500x/55967408.jpg" width="300">
 
 --
 
@@ -183,6 +183,173 @@ Příklad `git log --oneline --graph`
 * během `rebase` se můžou objevit konflikty
 * vyřeším konflikty `git add <soubory>` a `git rebase --continue`
 * v případě problémů zastavím `rebase` - `git rebase --abort`
+
+--
+
+### Rebase a merge
+
+#### Merge
+
+* sloučení dvou větví
+* provádí ten, kdo merguje pull request
+* `git merge <moje-větev>` - vytvoří lineární se základní větví
+* `git merge --no-ff <moje-větev>` - vytvoří "merge commit" (čitelnější historie)
+
+--
+
+### Rebase a merge
+
+#### Merge vs. no-ff
+
+<img src="http://i.stack.imgur.com/FMD5h.png" width="500">
+
+--
+
+### Rebase a merge
+
+#### Merge vs. rebase
+
+* `merge --no-ff` - když merguju větev do hlavní větve (master, dev apod.)
+* `rebase` - chci aktualizovat větev vůči hlavní větvi (99 % případů)
+
+--
+
+### Diff a tig
+
+#### Diff
+
+* `git diff` - zobrazí změny na `HEAD`
+* pozor zobrazí pouze soubory, o kterých GIT ví a nejsou přípravené ke commitu (`git add`)
+* umí zobrazit změny mezi revizemi, např. `git diff d06ab07..1978aa3`
+* `git diff --cached` - zobrazí změny na `HEAD` připravené ke commitu
+
+--
+
+### Diff a tig
+
+#### tig
+
+* nástroj pro zobrazení historie v konzoli [https://github.com/jonas/tig](https://github.com/jonas/tig)
+* funguje skvěle nejen na serveru, ovládání jako Vim <3
+
+![tig](https://gitfu.files.wordpress.com/2008/05/tig-maindiffsplit.png)
+
+--
+
+### Checkout a reset
+
+#### Checkout
+
+* přepínání mezi větvemi - `git checkout <moje-větev>`
+* vytvoří větev a přepne do ní - `git checkout -b <nová-větev>`
+* umí přepnout do kterékoliv revize - `git checkout 1978aa3`
+* zahození změn - `git checkout -- <název-souboru>`
+
+--
+
+### Checkout a reset
+
+#### Checkout
+
+* v GITu lze používat shellové wildcards - `git checkout -- *.py`
+* zahození všech změn - `git checkout -- .`
+* zahodí pouze změny, které nejsou připraveny ke commitu
+
+--
+
+### Checkout a reset
+
+#### Reset
+
+* resetuje `HEAD` na konkrétní revizi
+* odsun změn připravených ke commitu - `git reset HEAD *.py`
+* nezahazuje změny jako `git checkout`
+* `git reset HEAD~1` - zahodí poslední commit, ale ponechá změny
+* `git reset --hard origin/master` - natvrdo resetuje HEAD vůči `origin/master`
+
+--
+
+### Reflog, stash a blame
+
+#### Reflog
+
+* z GITu nelze "nic smazat"
+* `git reflog` - jako krabička poslední záchrany
+* `reflog` je jako zásobník změn
+* pokud něco odstraním/ztratím na 99 % to tu najdu
+* výchozí cache je 90 dní
+
+--
+
+### Reflog, stash a blame
+
+#### Stash
+
+* rychlé odkladiště
+* `git stash` - uloží "stranou" soubory, které se změnily
+* `git stash list` - zobrazí seznam změn ve stashi
+* `git stash pop` - ostraní poslední revizi ze stashe a aplikuje
+* je dobré používat parametr `-m` jinak zapomenete, co ve stashi je
+
+--
+
+### Reflog, stash a blame
+
+#### Blame
+
+* `git blame foo.py` - zobrazí poslední revizi, která změnila každý řádek souboru
+* odhalí "viníka" poslední změny na daném řádku
+
+<img src="http://cdn.meme.am/instances/500x/57567283.jpg" width="350">
+
+--
+
+### Konfig a aliasy
+
+#### Konfig
+
+* globální konfigurace - `~/.gitconfig`
+* lokální konfigurace - `můj-projekt/.git/config`
+* nastavení v souboru nebo příkazem `git config`
+* lokální konfigurace přepisuje globální
+
+--
+
+### Konfig a aliasy
+
+#### Konfig - globální
+
+![Git config global](img/git-config-global.png)
+
+--
+
+### Konfig a aliasy
+
+#### Konfig - lokální
+
+![Git config local](img/git-config-local.png)
+
+--
+
+### Konfig a aliasy
+
+#### Aliasy - zkratky pro často používané příkazy
+
+* psát `git checkout` je otravné - `git co`
+* nastavení typicky v globální konfiguraci
+* příklady
+
+![Git alias](img/git-alias.png)
+
+--
+
+### .gitignore
+
+* deklarace souborů, které má GIT ignorovat (globální a lokální)
+* podporad wildcards
+* `*.swp` - ignoruje všechny soubory s příponou `swp`
+* typické pro soubory IDE, build složky apod.
+* "super-lokální" gitignore - `.git/info/exclude`
 
 --
 
