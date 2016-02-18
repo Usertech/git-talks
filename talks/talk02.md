@@ -26,7 +26,7 @@ style: style.css
 * Checkout a reset
 * Reflog, stash a blame
 * Konfig a aliasy
-* .gitignore
+* Další praktické vychytávky
 
 --
 
@@ -138,8 +138,17 @@ Příklad `git log --oneline --graph`
 
 #### Rebase
 
+* chtěli jste někdo změni historii? S GITem můžete již dnes!
 * aktualizuje větev aplikováním jednotlivých revizí
 * `git rebase master`
+* `rebase` mění historii, proto je nutné při `push` použít `-f`
+* příklad `git push -f public <název-větve>`
+
+--
+
+### Rebase a merge
+
+#### Rebase - Jak funguje?
 
 ![GIT rebase](http://rypress.com/tutorials/git/media/5-1.png)
 
@@ -161,7 +170,8 @@ Příklad `git log --oneline --graph`
 #### Rebase vs. commit
 
 * sloučení změn s předchozí revizí lze udělat i při commitu
-* `git commit --ammend`
+* `git commit --ammend
+* `ammend` mění historii při `push` nutné použít `-f`
 * připravené změny sloučí s předchozí revizí
 
 --
@@ -343,13 +353,53 @@ Příklad `git log --oneline --graph`
 
 --
 
-### .gitignore
+### Další praktické vychytávky
+
+#### .gitignore
 
 * deklarace souborů, které má GIT ignorovat (globální a lokální)
 * podporad wildcards
 * `*.swp` - ignoruje všechny soubory s příponou `swp`
 * typické pro soubory IDE, build složky apod.
 * "super-lokální" gitignore - `.git/info/exclude`
+
+--
+
+### Další praktické vychytávky
+
+#### Prázdná složka
+
+* GIT sleduje pouze soubory a proto prázdné složky ignoruje
+* pro přidání prázdné složky je nutné ve složce vytvořit prázdný soubor `.gitkeep`
+
+--
+
+### Další praktické vychytávky
+
+#### Odstranění souborů
+
+* `git rm <název-souboru>`
+* odstranění souborů připravených ke commitu `git rm --cached <název-souboru>`
+* pokud se bojíte, zkuste nejdřív `git rm --dry-run <název-souboru>`
+
+--
+
+### Další praktické vychytávky
+
+#### Odstranění větví
+
+* `git branch --merged` - vypíše mergnuté větve vůči `HEAD`
+* `git branch -d <název-větve>` - odstraní danou větev, pouze pokud byla mergnuté do `HEAD`
+* `git branch -D <název-větve>` - odstraní danou větev a nic nekontroluje!
+
+--
+
+### Další praktické vychytávky
+
+#### Odstranění vzdálených větví
+
+* `git push public :<název-větve>` - odstraní větev z `public` repozitáře
+* nebo `git push --prune public` - odstraní vzdálené větve, pokud nejsou v lokálním repozitáři
 
 --
 
